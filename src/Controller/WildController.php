@@ -9,12 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 Class WildController extends AbstractController
 {
     /**
-     * @Route("/wild", name="app_index")
+     * @Route("/", name="app_base")
      */
     public function index() : Response
     {
-        return $this->render('wild/index.html.twig', [
-            'website' => 'wild Séries',
+        return $this->render('wild/base.html.twig', [
+            'title' => 'Bienvenue sur Wild Series !!!',
         ]);
     }
 
