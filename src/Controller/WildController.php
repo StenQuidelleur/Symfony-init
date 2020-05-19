@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 Class WildController extends AbstractController
 {
     /**
-     * @Route("wild/show/{slug}", name="show_slug", requirements={"slug"="[a-z0-9-]+$"}, defaults={"sulg"= null})
-     * @param string $slug
+     * @Route("wild/show/{slug}", name="show_slug", requirements={"slug"="[a-z0-9-]+$"}, defaults={"slug"= null})
+     * @param $slug
      * @return Response
      */
-    public function show(string $slug) : Response
+    public function show($slug) : Response
     {
         if ($slug != null) {
             $replace = ucwords(str_replace('-', ' ',$slug));
