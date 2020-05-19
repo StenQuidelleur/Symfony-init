@@ -9,12 +9,20 @@ use Symfony\Component\Routing\Annotation\Route;
 Class WildController extends AbstractController
 {
     /**
-     * @Route("/", name="app_base")
+     * @Route("wild/show/{slug}", name="show_slug", requirements={"slug"="[a-z0-9-]+$"}, defaults={"sulg"= null})
+     * @param string $slug
+     * @return Response
      */
-    public function index() : Response
+    public function show(string $slug) : Response
     {
-        return $this->render('wild/base.html.twig', [
-            'title' => 'Bienvenue sur Wild Series !!!',
+        if ($slug != null) {
+            $replace = ucwords(str_replace('-', ' ',$slug));
+        } else {
+            $replace = "Aucune série sélectionnée, veuillez choisir une série !";
+        }
+
+        return $this->render('wild/show.html.twig', [
+            'slug' => $replace
         ]);
     }
 

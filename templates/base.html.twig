@@ -9,9 +9,9 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}
-        {% include 'wild/navbar.html.twig' %}
-            <h1 class="blue">{{ title }}</h1>
+        {% block content %}
+            {% include 'wild/navbar.html.twig' %}
+            <h1>{{ title }}</h1>
         {% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
