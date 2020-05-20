@@ -9,17 +9,17 @@
         {% endblock %}
     </head>
     <body>
+        <header>
+        {% include 'wild/navbar.html.twig' %}
+        </header>
+        <div class="container">
         {% block content %}
-            {% include 'wild/navbar.html.twig' %}
             <h1>{{ title }}</h1>
             <a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
                 Testing show() method from WildController with a real program s slug.
             </a>
-            <br>
-            <a href="{{ path('wild_index') }}">
-                Testing index() method from WildController to view all programs.
-            </a>
         {% endblock %}
+        </div>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
