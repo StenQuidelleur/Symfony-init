@@ -128,6 +128,7 @@ Class WildController extends AbstractController
      * @return Response
      */
     public function showEpisode (Episode $episode) :Response {
+        
         $season = $episode->getSeason();
         $program = $season->getProgram();
 
