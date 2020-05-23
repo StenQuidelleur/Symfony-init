@@ -9,7 +9,7 @@
             <p class="card-text">Liste des episodes: </p>
             <ul class="list-group">
                 {%  for episode in episodes %}
-                <li class="list-group-item">{{ episode.number }} : {{ episode.title }}</li>
+                <li class="list-group-item"><a href="{{ path('wild_episode', { 'id': episode.id }) }}">{{ episode.number }} : {{ episode.title }}</a></li>
                 {% endfor %}
             </ul>
             {% endfor %}

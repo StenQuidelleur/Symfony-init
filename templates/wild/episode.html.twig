@@ -4,11 +4,8 @@
     <div class="card col-6" >
         <div class="card-body">
                 <h1 class=" card-title">Saison{{ season.number }} de {{ program.title }} ({{ season.year }})</h1>
-                <p class="card-text">{{ season.description }}</p>
-                <p class="card-text">Liste des episodes: </p>
-                <ul class="list-group">
-                    <li class="list-group-item">{{ episode.number }} : {{ episode.title }}</li>
-                </ul>
+                <p class="card-text">{{ episode.number }}: {{ episode.title }} </p>
+                <p class="card-text">{{ episode.synopsis }} </p>
         </div>
     </div>
 
