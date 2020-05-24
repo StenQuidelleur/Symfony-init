@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    {{ form_start(form) }}
+   {#{{ form_start(form) }}
     {{ form_row(form.searchField) }}
     <button type="submit" name="btnSearch">Rechercher</button>
     {{ form_end(form) }}
+    ==========================
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}#}
     <h1>Toutes les séries de la table program : </h1>
     {% for program in programs %}
         <div class="card">

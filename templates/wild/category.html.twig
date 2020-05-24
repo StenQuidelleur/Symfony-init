@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+    <div class="btn-group mb-2" role="group" aria-label="Basic example">
+        {% for categ in categorys %}
+            <a class="btn btn-secondary" href="{{ path('wild_category', { 'categoryName': categ.name }) }}">{{ categ.name }}</a>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="{{ path('addCategory') }}" class="btn btn-primary">Add new Category</a>
+    </div>
     <h1>Les 3 dernières séries de la categorie {{ categoryName }} : </h1>
     {% for program in programs %}
         <div class="card">

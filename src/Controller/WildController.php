@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\CategoryType;
 use App\Form\ProgramSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,15 +29,30 @@ Class WildController extends AbstractController
                 'No program found in program\'s table.'
             );
         }
-        $form = $this->createForm(
+        /*$form = $this->createForm(
             ProgramSearchType::class,
             null,
             ['method' => Request::METHOD_GET]
         );
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);*/
 
         return $this->render('wild/index.html.twig', [
             'programs' => $programs,
-            'form' => $form->createView()
+            //'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("wild/showCateg", name="wild_category")
+     * @return Response
+     */
+    public function showCateg() :Response {
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+        return $this->render('wild/category.html.twig', [
+            'category' => $category
         ]);
     }
 
@@ -95,10 +111,14 @@ Class WildController extends AbstractController
                 'No programs with category ' . $categoryName . ', found in program table.'
             );
         }
+        $categorys = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
 
         return $this->render('wild/category.html.twig', [
             'programs' => $programs,
-            'categoryName'  => $categoryName
+            'categoryName'  => $categoryName,
+            'categorys' => $categorys
         ]);
     }
 
