@@ -34,23 +34,27 @@ class Season
      */
     private $description;
 
-    private $episode;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Episode", mappedBy="season")
+     */
+    private $episodes;
 
     public function __construct()
     {
-        $this->episode = new ArrayCollection();
+        $this->episodes = new ArrayCollection();
     }
 
     /**
      * @return Collection|Episode[]
      */
-    public function getEpisode(): Collection
+    public function getEpisodes(): Collection
     {
-        return $this->episode;
+        return $this->episodes;
     }
 
     /**
-     * param Episode $episode
+     * @param Episode $episode
      * @return Season
      */
     public function addEpisode(Episode $episode): self

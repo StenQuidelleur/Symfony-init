@@ -34,11 +34,14 @@ class Program
      */
     private $poster;
 
-    private $season;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Season", mappedBy="program")
+     */
+    private $seasons;
 
     public function __construct()
     {
-        $this->season = new ArrayCollection();
+        $this->seasons = new ArrayCollection();
     }
 
     /**
@@ -50,7 +53,7 @@ class Program
     }
 
     /**
-     * param Season $season
+     * @param Season $season
      * @return Program
      */
     public function addSeason(Season $season): self

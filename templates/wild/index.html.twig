@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h2 class="card-title">{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
                 <p class="card-text">{{ program.summary }}</p>
-                <a href="{{ path('wild_season', { 'id': program.id }) }}" class="btn btn-primary">Saisons</a>
+                <a href="{{ path('show_program', { slug:program.title }) }}" class="btn btn-primary">Voir</a>
             </div>
         </div>
     {% else %}
