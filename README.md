@@ -11,3 +11,5 @@ Symfony-13 "Validation": https://www.loom.com/share/ef79a0b004fe4698a9afe7649d94
 Symfony-14 "ManyToMany": https://www.loom.com/share/bdd4822fd4d348b3a0f46e0c6b4f61c4
 
 Symfony-15 "Entity Type": https://www.loom.com/share/b0d4cea4900e42a8a00dfb191cc80829
+
+Symfony-16 "Fixture": https://www.loom.com/share/9102847bbd4e4ecb9a3d7574ef8d51ba

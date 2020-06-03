@@ -20,7 +20,9 @@
                                 <li>Aucun acteur pour cette série</li>
                             {% endfor %}
                         </ul>
-                        <a href="{{ path('wild_season', { 'id': program.id }) }}" class="btn btn-primary">Saisons</a>
+                        {% for season in seasons %}
+                        <a href="{{ path('wild_season', { 'id': season.id }) }}" class="btn btn-primary">Saison:{{ season.number }}</a>
+                        {% endfor %}
                         <a href="{{ path('program_edit', {'id': program.id}) }}" class="btn btn-primary">edit</a>
                         {{ include('program/_delete_form.html.twig') }}
                     </div>
