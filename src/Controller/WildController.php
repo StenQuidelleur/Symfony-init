@@ -163,7 +163,7 @@ Class WildController extends AbstractController
     }
 
     /**
-     * @Route("wild/showEpisode/{id}", name="wild_episode")
+     * @Route("wild/showEpisode/{slug}", name="wild_episode")
      * @param Episode $episode
      * @return Response
      */
@@ -181,7 +181,7 @@ Class WildController extends AbstractController
     }
 
     /**
-     * @Route("wild/actor/{id}", name="wild_actor")
+     * @Route("wild/actor/{slug}", name="wild_actor")
      * @param Actor $actor
      * @return Response
      */
