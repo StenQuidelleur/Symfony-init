@@ -148,11 +148,10 @@ Class WildController extends AbstractController
 
     /**
      * @Route("wild/showBySeason/{id}", name="wild_season")
-     * @param $id
+     * @param Season $season
      * @return Response
      */
-    public function showBySeason(int $id) :Response {
-        $season = $this->getDoctrine()->getRepository(Season::class)->find($id);
+    public function showBySeason(Season $season) :Response {
         $program = $season->getProgram();
         $episodes = $season->getEpisodes();
 
