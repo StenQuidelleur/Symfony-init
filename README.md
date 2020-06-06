@@ -15,3 +15,5 @@ Symfony-15 "Entity Type": https://www.loom.com/share/b0d4cea4900e42a8a00dfb191cc
 Symfony-16 "Fixture": https://www.loom.com/share/9102847bbd4e4ecb9a3d7574ef8d51ba
 
 Symfony-17 "Service": https://www.loom.com/share/9de1443e13eb4876b090c2b4a5d3631d
+
+Symfony-18 "Mailer": https://www.loom.com/share/48f445272f004fee96aecf205f68e7ce

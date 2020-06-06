@@ -1,0 +1,27 @@
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+    <h1>Un nouveau program à été ajouté !</h1>
+    <div class="row justify-content-center">
+        <div class="card-deck col-4">
+            <div class="card mb-3 mx-2" >
+                <img class=" card-img-top align-self-start mr-3" style="width: auto; height: 300px;" src="{{program.poster}}" alt="{{ program.title }} poster">
+                <div class="card-body media-body">
+                    <h1 class=" card-title mt-0">{{ program.title }}</h1>
+                    <p class="card-text">{{ program.summary }}</p>
+                    <p class="card-text">Categorie : {{ program.category.name }}</p>
+                    <a href="localhost:8000{{ path('program_show', {'slug': program.slug}) }}" class="btn btn-primary">Voir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}
