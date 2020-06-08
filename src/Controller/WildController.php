@@ -4,20 +4,24 @@ namespace App\Controller;
 
 use App\Entity\Actor;
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Entity\User;
 use App\Form\CategoryType;
+use App\Form\CommentType;
 use App\Form\ProgramSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+
 Class WildController extends AbstractController
 {
     /**
-     * @Route("/wild", name="wild_index")
+     * @Route("/", name="wild_index")
      * @return Response A response instance
      */
     public function index() :Response
@@ -38,7 +42,7 @@ Class WildController extends AbstractController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);*/
 
-        return $this->render('wild/index.html.twig', [
+        return $this->render('wild/home.html.twig', [
             'programs' => $programs,
             //'form' => $form->createView()
         ]);
@@ -165,18 +169,39 @@ Class WildController extends AbstractController
     /**
      * @Route("wild/showEpisode/{slug}", name="wild_episode")
      * @param Episode $episode
+     * @param Request $request
      * @return Response
      */
-    public function showEpisode (Episode $episode) :Response {
+    public function showEpisode (Episode $episode , Request $request) :Response {
 
         $season = $episode->getSeason();
         $program = $season->getProgram();
 
+
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setEpisode($episode);
+            $comment->setAuthor($this->getUser());
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('wild_index');
+        }
+
+        $comments = $episode->getComments();
+        //$comments = $this->getDoctrine()->getRepository(Comment::class)->findBy(['comments'=> $episode], ['id' => 'ASC']);
+
         return $this->render('wild/episode.html.twig', [
             'episode' => $episode,
             'season' => $season,
-            'program' => $program
-
+            'program' => $program,
+            'form' => $form->createView(),
+            'comments'=> $comments
         ]);
     }
 

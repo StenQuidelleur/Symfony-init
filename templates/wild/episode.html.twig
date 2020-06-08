@@ -3,13 +3,28 @@
 {% block content %}
     <div class="card col-6" >
         <div class="card-body">
-                <h1 class=" card-title">Saison{{ season.number }} de {{ program.title }} ({{ season.year }})</h1>
-                <p class="card-text">{{ episode.number }}: {{ episode.title }} </p>
-                <p class="card-text">{{ episode.synopsis }} </p>
+            <h1 class=" card-title">Saison{{ season.number }} de {{ program.title }} ({{ season.year }})</h1>
+            <p class="card-text">{{ episode.number }}: {{ episode.title }} </p>
+            <p class="card-text">{{ episode.synopsis }} </p>
+            <p class="card-text font-weight-bold">Commentaire:</p>
+            {% for comment in comments %}
+            <p class="card-text">{{ comment.comment }}</p>
+            <hr>
+            {% endfor %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>
+                <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Commenter</a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    {{ include('comment/_form.html.twig') }}
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 
-    <a href="{{ path('wild_index') }}" class="btn btn-success">
+    <a href="{{ path('wild_index') }}" class="btn btn-success mt-3">
         Retour à l'accueil
     </a>
 {% endblock %}
