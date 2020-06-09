@@ -8,10 +8,15 @@
             <p class="card-text">{{ episode.synopsis }} </p>
             <p class="card-text font-weight-bold">Commentaire:</p>
             {% for comment in comments %}
-            <p class="card-text">{{ comment.comment }}</p>
+            <div class="row justify-content-between px-3">
+                <p class="card-text">{{ comment.comment }}</p>
+                {% if comment.author == app.user %}
+                    {{ include('comment/_delete_form.html.twig') }}
+                {% endif %}
+            </div>
             <hr>
             {% endfor %}
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_SUBSCRIBER') %}
             <p>
                 <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Commenter</a>
             </p>

@@ -177,8 +177,6 @@ Class WildController extends AbstractController
         $season = $episode->getSeason();
         $program = $season->getProgram();
 
-
-
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);

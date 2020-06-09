@@ -19,3 +19,5 @@ Symfony-17 "Service": https://www.loom.com/share/9de1443e13eb4876b090c2b4a5d3631
 Symfony-18 "Mailer": https://www.loom.com/share/48f445272f004fee96aecf205f68e7ce
 
 Symfony-19 "Utilisateur" : https://www.loom.com/share/21a8206550d94431a5304086f3229542
+
+Symfony-20 "Sécuriser les routes": https://www.loom.com/share/0e34abff4d9944ac8822a5c3424f66e3
