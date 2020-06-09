@@ -217,4 +217,17 @@ Class WildController extends AbstractController
             'actor' => $actor
         ]);
     }
+
+    /**
+     * @Route("/profil", name="wild_profil")
+     * @param Actor $actor
+     * @return Response
+     */
+    public function profil() :Response {
+
+
+        return $this->render('wild/profil.html.twig');
+    }
+
+
 }

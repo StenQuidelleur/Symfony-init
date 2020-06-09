@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="card media  col-4" >
+        <div class="card-body media-body">
+            <h1 class=" card-title mt-0">{{ app.user.email }}</h1>
+        </div>
+    </div>
+    <a href="{{ path('wild_index') }}" class="btn btn-success mt-3">
+        Retour à l'accueil
+    </a>
+{% endblock %}
