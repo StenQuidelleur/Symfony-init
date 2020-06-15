@@ -176,6 +176,7 @@ Class WildController extends AbstractController
 
         $season = $episode->getSeason();
         $program = $season->getProgram();
+        $slug = $episode->getSlug();
 
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -188,7 +189,7 @@ Class WildController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
 
-            return $this->redirectToRoute('wild_index');
+            return $this->redirectToRoute('wild_episode', ['slug'=>$slug]);
         }
 
         $comments = $episode->getComments();
