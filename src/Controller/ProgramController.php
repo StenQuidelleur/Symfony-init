@@ -52,7 +52,10 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
-            $email = (new TemplatedEmail())
+            $this->addFlash('success', 'The new program has been created');
+
+
+            /*$email = (new TemplatedEmail())
                 ->from($this->getParameter('mailer_from'))
                 ->to('sten.quidelleur36@gmail.com')
                 ->subject('Une nouvelle série vient d\'être publiée !')
@@ -64,9 +67,10 @@ class ProgramController extends AbstractController
                 'program' => $program
             ]);
 
-            return new Response($content);
+            return new Response($content);*/
 
-            //return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('program_index');
+
         }
 
         return $this->render('program/new.html.twig', [
@@ -108,6 +112,8 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', 'The new program has been edited');
+
             return $this->redirectToRoute('program_index');
         }
 
@@ -129,6 +135,8 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'This program has been deleted');
         }
 
         return $this->redirectToRoute('program_index');
